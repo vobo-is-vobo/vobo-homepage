@@ -1,6 +1,5 @@
 body {    
     font-family: "Helvetica Neue", Arial, sans-serif;
-    background-color: #fafafa;
     margin: 0;
     padding: 0;
     color: #333;
@@ -8,7 +7,7 @@ body {
 
 .review-gallery {
     text-align: center;
-    padding: 60px 20px;
+    padding: 0; /* 移除上下的 padding */
     border-radius: 16px;
     overflow: visible;
     position: relative;
@@ -36,7 +35,7 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background-color: #fff;
     padding: 20px;
-    margin: 20px 0;
+    margin: 0; /* 移除上下間隔 */
     border-radius: 14px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
     flex-shrink: 0;
