@@ -45,7 +45,7 @@ function renderReviews() {
 renderReviews();
 
 // 自動滾動
-let scrollSpeed = 0.5; // 減慢滾動速度，讓手機顯示更加流暢
+let scrollSpeed = 0.3; // 更慢的滾動速度以保證流暢性
 let scrollInterval;
 
 function startScroll() {
@@ -76,7 +76,7 @@ reviewContainer.addEventListener("mouseleave", startScroll);
 // 根據螢幕尺寸調整滾動速度和樣式
 window.addEventListener("resize", function() {
     if (window.innerWidth < 768) {
-        scrollSpeed = 0.3; // 在較小螢幕上減慢滾動速度，讓滾動更加流暢
+        scrollSpeed = 0.2; // 在較小螢幕上減慢滾動速度
     } else {
         scrollSpeed = 0.5; // 在較大螢幕上使用稍快的滾動速度
     }
