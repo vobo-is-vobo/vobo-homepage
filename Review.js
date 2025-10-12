@@ -72,3 +72,9 @@ startScroll();
 // 滑鼠懸停暫停
 reviewContainer.addEventListener("mouseenter", stopScroll);
 reviewContainer.addEventListener("mouseleave", startScroll);
+window.addEventListener("resize", function() {
+    if (window.innerWidth < 768) {
+        // Adjust layout for small screens
+    }
+});
+
