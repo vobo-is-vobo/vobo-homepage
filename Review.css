@@ -9,7 +9,7 @@ body {
 .review-gallery {
     text-align: center;
     padding: 60px 20px;
-    /* 移除背景漸變色 */
+    /* 移除背景 */
     background: none;
     border-radius: 16px;
     overflow: visible;
