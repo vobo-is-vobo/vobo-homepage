@@ -1,4 +1,4 @@
-body {    
+body {     
     font-family: "Helvetica Neue", Arial, sans-serif;
     background-color: #fafafa;
     margin: 0;
@@ -68,7 +68,7 @@ body {
 .image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Maintain aspect ratio */
     display: block;
     transition: transform 0.3s ease;
 }
