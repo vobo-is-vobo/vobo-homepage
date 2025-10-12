@@ -9,7 +9,6 @@ body {
 .review-gallery {
     text-align: center;
     padding: 60px 20px;
-    /* Remove background gradient */
     border-radius: 16px;
     overflow: visible;
     position: relative;
@@ -25,9 +24,9 @@ body {
     display: flex;
     justify-content: flex-start;
     gap: 28px;
-    animation: scroll 40s linear infinite;
     width: max-content;
     flex-wrap: nowrap; /* Prevent wrapping on small screens */
+    animation: scroll 40s linear infinite;
 }
 
 .review-item {
