@@ -1,4 +1,4 @@
-body {   
+body {    
     font-family: "Helvetica Neue", Arial, sans-serif;
     background-color: #fafafa;
     margin: 0;
@@ -9,7 +9,8 @@ body {
 .review-gallery {
     text-align: center;
     padding: 60px 20px;
-    background: linear-gradient(135deg, #ffffff, #f8f8f8);
+    /* 移除背景漸變色 */
+    background: none;
     border-radius: 16px;
     overflow: visible;
     position: relative;
