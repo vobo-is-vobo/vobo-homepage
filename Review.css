@@ -1,4 +1,4 @@
-body {    
+body {     
     font-family: "Helvetica Neue", Arial, sans-serif;
     background-color: #fafafa;
     margin: 0;
@@ -15,7 +15,8 @@ body {
     background-repeat: no-repeat; /* 防止背景圖片重複 */
     border-radius: 16px;
     overflow: visible;
-    position: relative;
+    position: relative; /* 設置為相對定位 */
+    z-index: 1; /* 設置較高的層級，讓圖片層次往上 */
 }
 
 .review-scroll-container {
