@@ -1,4 +1,4 @@
-body {    
+body {     
     font-family: "Helvetica Neue", Arial, sans-serif;
     background-color: #fafafa;
     margin: 0;
@@ -13,9 +13,10 @@ body {
     background-size: cover; /* 確保背景圖片覆蓋整個容器 */
     background-position: center; /* 讓圖片置中 */
     background-repeat: no-repeat; /* 防止背景圖片重複 */
-    border-radius: 16px;
+    border-radius: 0; /* 去除圓角 */
     overflow: visible;
     position: relative;
+    margin-bottom: 0; /* 去除底部空白 */
 }
 
 .review-scroll-container {
@@ -41,7 +42,7 @@ body {
     background-color: #fff;
     padding: 20px;
     margin: 20px 0;
-    border-radius: 14px;
+    border-radius: 0; /* 去除圓角 */
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
     flex-shrink: 0;
     display: flex;
@@ -60,7 +61,7 @@ body {
     width: 100%;
     height: 200px; /* Increased image height for visual appeal */
     margin-bottom: 15px;
-    border-radius: 14px;
+    border-radius: 0; /* 去除圓角 */
     overflow: hidden;
     position: relative;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
