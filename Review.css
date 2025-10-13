@@ -13,16 +13,27 @@ body {
     background-size: cover; /* 確保背景圖片覆蓋整個容器 */
     background-position: center; /* 讓圖片置中 */
     background-repeat: no-repeat; /* 防止背景圖片重複 */
-    border-radius: 0; /* 去除圓角 */
-    overflow: visible;
-    position: relative;
+    position: relative; /* 確保遮罩可以覆蓋 */
     margin-bottom: 0; /* 去除底部空白 */
+}
+
+.review-gallery::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); /* 由下至上的黑色遮罩，透明度50% */
+    z-index: 1; /* 確保遮罩位於背景圖片之上 */
 }
 
 .review-scroll-container {
     width: 100%;
     overflow: hidden;
     padding: 20px 10px; /* Reduced padding for smaller screens */
+    position: relative; /* 確保內容在遮罩上方 */
+    z-index: 2; /* 確保內容在遮罩之上 */
 }
 
 .review-container {
