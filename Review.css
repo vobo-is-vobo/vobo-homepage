@@ -8,15 +8,15 @@ body {
 
 .review-gallery {
     text-align: center;
-    padding: 60px 20px;
-    background-image: url('https://github.com/vobo-is-vobo/vobo-homepage/blob/main/backGroungBigPic2.0.jpg?raw=true'); /* 修改這一行 */
-    background-size: cover; /* 確保背景圖片覆蓋整個容器 */
-    background-position: center; /* 讓圖片置中 */
-    background-repeat: no-repeat; /* 防止背景圖片重複 */
-    border-radius: 16px;
-    overflow: visible;
-    position: relative; /* 設置為相對定位 */
-    z-index: 1; /* 設置較高的層級，讓圖片層次往上 */
+    padding: 0; /* 去掉額外的 padding 讓背景圖和下一單元緊密相接 */
+    background-image: url('https://github.com/vobo-is-vobo/vobo-homepage/blob/main/backGroungBigPic2.0.png?raw=true');
+    background-size: cover;       /* 背景填滿整個容器 */
+    background-position: center;  /* 背景置中 */
+    background-repeat: no-repeat; /* 不重複 */
+    position: relative;
+    z-index: 1;
+    border-radius: 0;             /* 移除圓角 */
+    overflow: visible;            /* 確保不剪裁背景 */
 }
 
 .review-scroll-container {
@@ -173,11 +173,10 @@ a {
 
 @media (max-width: 480px) {
     .review-gallery {
-        padding: 40px 10px; /* Adjust padding for mobile screens */
+        padding: 0; /* Adjust padding for mobile screens to make it flush */
     }
 
     .overlay-image-left, .overlay-image-right {
         width: 50%; /* Overlay images take up more space on smaller screens */
     }
 }
-
