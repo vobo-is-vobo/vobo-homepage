@@ -1,4 +1,4 @@
-body {     
+body {   
     font-family: "Helvetica Neue", Arial, sans-serif;
     background-color: #fafafa;
     margin: 0;
@@ -9,6 +9,7 @@ body {
 .review-gallery {
     text-align: center;
     padding: 60px 20px;
+    background: linear-gradient(135deg, #ffffff, #f8f8f8);
     border-radius: 16px;
     overflow: visible;
     position: relative;
@@ -18,18 +19,15 @@ body {
     width: 100%;
     overflow: hidden;
     padding: 20px 10px; /* Reduced padding for smaller screens */
-    position: relative;
 }
 
 .review-container {
     display: flex;
     justify-content: flex-start;
     gap: 28px;
-    width: max-content; /* Ensure the width is large enough to hold all items */
-    flex-wrap: nowrap; /* Prevent wrapping on small screens */
     animation: scroll 40s linear infinite;
-    white-space: nowrap; /* Prevent wrapping of content */
-    transition: scroll-left 0.5s ease;
+    width: max-content;
+    flex-wrap: nowrap; /* Prevent wrapping on small screens */
 }
 
 .review-item {
@@ -57,7 +55,7 @@ body {
 
 .image-container {
     width: 100%;
-    height: 200px;
+    height: 200px; /* Increased image height for visual appeal */
     margin-bottom: 15px;
     border-radius: 14px;
     overflow: hidden;
@@ -68,7 +66,7 @@ body {
 .image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Maintain aspect ratio */
+    object-fit: cover;
     display: block;
     transition: transform 0.3s ease;
 }
@@ -146,32 +144,32 @@ a {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .review-container {
-        gap: 16px; /* Reduced gap between items */
-        animation: none; /* No animation on small screens */
-    }
-
     .review-item {
         width: 100%; /* Full width on smaller screens */
         margin: 10px 0;
     }
 
+    .review-container {
+        gap: 16px; /* Reduced gap between items */
+        animation: none; /* No animation on small screens */
+    }
+
     .image-container {
-        height: 150px; /* Adjust image size on small screens */
+        height: 150px; /* Reduce image height for smaller screens */
     }
 
     .review-info h3 {
-        font-size: 14px;
+        font-size: 14px; /* Smaller title font size */
     }
 
     .review-info p {
-        font-size: 12px;
+        font-size: 12px; /* Smaller paragraph font size */
     }
 }
 
 @media (max-width: 480px) {
     .review-gallery {
-        padding: 40px 10px;
+        padding: 40px 10px; /* Adjust padding for mobile screens */
     }
 
     .overlay-image-left, .overlay-image-right {
