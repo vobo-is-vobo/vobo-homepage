@@ -11,7 +11,7 @@ body {
 .review-gallery {
   text-align: center;
   padding: 60px 20px;
-  background-image: url('https://github.com/vobo-is-vobo/vobo-homepage/blob/main/backGroungBigPic2.0.png?raw=true');
+  background-image: url('https://github.com/vobo-is-vobo/vobo-homepage/blob/main/review.bg.png?raw=true');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -156,3 +156,4 @@ body {
     font-size: 11px;
   }
 }
+
