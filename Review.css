@@ -1,4 +1,4 @@
-body {      
+body {       
   font-family: "Helvetica Neue", Arial, sans-serif;
   background-color: #fafafa;
   margin: 0;
@@ -12,11 +12,17 @@ body {
   text-align: center;
   padding: 60px 20px;
   background-image: url('https://github.com/vobo-is-vobo/vobo-homepage/blob/main/review.bg.png?raw=true');
-  background-size: cover;
-  background-position: center;
+  background-size: cover;           /* 背景填滿 */
+  background-position: center;      /* 置中對齊 */
+  background-repeat: no-repeat;     /* 不重複 */
   position: relative;
+  min-height: 100vh;                /* ✅ 滿版區塊：佔滿整個螢幕高度 */
+  display: flex;                    /* 讓內容置中 */
+  flex-direction: column;
+  justify-content: center;
 }
 
+/* ======================== 跑馬燈容器 ======================== */
 .review-scroll-container {
   width: 100%;
   overflow: hidden;
@@ -156,4 +162,3 @@ body {
     font-size: 11px;
   }
 }
-
