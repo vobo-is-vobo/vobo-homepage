@@ -1,193 +1,158 @@
-body {     
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    background-color: #fafafa;
-    margin: 0;
-    padding: 0;
-    color: #333;
+body {      
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  overflow-x: hidden;
 }
 
+/* ======================== 主區塊 ======================== */
 .review-gallery {
-    text-align: center;
-    padding: 60px 20px;
-    background-image: url('https://github.com/vobo-is-vobo/vobo-homepage/blob/main/backGroungBigPic2.0.png?raw=true'); /* 修改這一行 */
-    background-size: cover; /* 確保背景圖片覆蓋整個容器 */
-    background-position: center; /* 讓圖片置中 */
-    background-repeat: no-repeat; /* 防止背景圖片重複 */
-    position: relative; /* 確保遮罩可以覆蓋 */
-    margin-bottom: 0; /* 去除底部空白 */
-}
-
-.review-gallery::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)); /* 上下漸層遮罩 */
-    z-index: 1; /* 確保遮罩位於背景圖片之上 */
+  text-align: center;
+  padding: 60px 20px;
+  background-image: url('https://github.com/vobo-is-vobo/vobo-homepage/blob/main/backGroungBigPic2.0.png?raw=true');
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 
 .review-scroll-container {
-    width: 100%;
-    overflow: hidden;
-    padding: 20px 10px; /* Reduced padding for smaller screens */
-    position: relative; /* 確保內容在遮罩上方 */
-    z-index: 2; /* 確保內容在遮罩之上 */
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  padding: 20px 10px;
 }
 
+/* ======================== 桌機：自動跑馬燈 ======================== */
 .review-container {
-    display: flex;
-    justify-content: flex-start;
-    gap: 28px;
-    animation: scroll 40s linear infinite;
-    width: max-content;
-    flex-wrap: nowrap; /* Prevent wrapping on small screens */
-}
-
-.review-item {
-    position: relative;
-    width: 200px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #fff;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 0; /* 去除圓角 */
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
-}
-
-.review-item:hover {
-    transform: scale(1.06);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
-    z-index: 20;
-}
-
-.image-container {
-    width: 100%;
-    height: 200px; /* Increased image height for visual appeal */
-    margin-bottom: 15px;
-    border-radius: 0; /* 去除圓角 */
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-.image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.image-container:hover img {
-    transform: scale(1.1);
-}
-
-.review-info {
-    text-align: left;
-}
-
-.review-info h3 {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0;
-    color: #222;
-}
-
-.review-info p {
-    font-size: 13px;
-    margin: 8px 0;
-    color: #555;
-    line-height: 1.5;
-}
-
-.rating {
-    font-size: 16px;
-    font-weight: bold;
-    color: #f5b400;
-}
-
-.rating .filled {
-    color: #f5b400;
-}
-
-.rating .empty {
-    color: #ddd;
-}
-
-.rating span {
-    margin-right: 3px;
-}
-
-.review-item:active {
-    transform: scale(1);
+  display: flex;
+  justify-content: flex-start;
+  gap: 28px;
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: scroll 40s linear infinite;
 }
 
 @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
+/* 滑鼠經過暫停 */
 .review-scroll-container:hover .review-container {
-    animation-play-state: paused;
+  animation-play-state: paused;
 }
 
-/* Overlay images */
-.overlay-image-left, .overlay-image-right {
-    position: absolute;
-    bottom: 0;
-    width: 45%;
-    z-index: 10;
-    opacity: 0.65;
-    pointer-events: none;
+/* ======================== 卡片 ======================== */
+.review-item {
+  position: relative;
+  width: 220px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.overlay-image-left { left: 0; }
-.overlay-image-right { right: 0; }
-
-a {
-    text-decoration: none;
-    color: inherit;
+.review-item:hover {
+  transform: scale(1.05);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .review-item {
-        width: 100%; /* Full width on smaller screens */
-        margin: 10px 0;
-    }
+.image-container {
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
 
-    .review-container {
-        gap: 16px; /* Reduced gap between items */
-        animation: none; /* No animation on small screens */
-    }
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
 
-    .image-container {
-        height: 150px; /* Reduce image height for smaller screens */
-    }
+.image-container:hover img {
+  transform: scale(1.08);
+}
 
-    .review-info h3 {
-        font-size: 14px; /* Smaller title font size */
-    }
+.review-info {
+  text-align: left;
+}
 
-    .review-info p {
-        font-size: 12px; /* Smaller paragraph font size */
-    }
+.review-info h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: #222;
+}
+
+.review-info p {
+  font-size: 13px;
+  margin: 8px 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+.rating {
+  font-size: 15px;
+  font-weight: bold;
+  color: #f5b400;
+}
+
+/* ======================== 📱 手機／📟 平板 ======================== */
+@media (max-width: 1024px) {
+  .review-scroll-container {
+    overflow-x: auto;                /* 可左右滑動 */
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  .review-container {
+    animation: none;                /* 停止跑馬燈 */
+    transform: none;                /* 避免 translateX 影響 */
+    gap: 18px;
+  }
+
+  .review-item {
+    width: 180px;
+    padding: 14px;
+  }
+
+  .image-container {
+    height: 140px;
+  }
+
+  .review-info h3 {
+    font-size: 15px;
+  }
+
+  .review-info p {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 480px) {
-    .review-gallery {
-        padding: 40px 10px; /* Adjust padding for mobile screens */
-    }
+  .review-item {
+    width: 140px;
+    padding: 10px;
+  }
 
-    .overlay-image-left, .overlay-image-right {
-        width: 50%; /* Overlay images take up more space on smaller screens */
-    }
+  .image-container {
+    height: 110px;
+  }
+
+  .review-info h3 {
+    font-size: 13px;
+  }
+
+  .review-info p {
+    font-size: 11px;
+  }
 }
