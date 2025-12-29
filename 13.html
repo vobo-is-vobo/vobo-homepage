@@ -1,127 +1,115 @@
-<!-- MailerLite Universal -->
+<!-- =========================
+     MailerLite Universal
+     ========================= -->
 <script>
 (function(w,d,e,u,f,l,n){
   w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);};
-  l=d.createElement(e);l.async=1;l.src=u;
-  n=d.getElementsByTagName(e)[0];n.parentNode.insertBefore(l,n);
+  l=d.createElement(e); l.async=1; l.src=u;
+  n=d.getElementsByTagName(e)[0]; n.parentNode.insertBefore(l,n);
 })(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-ml('account', '1940462');
+ml('account','1940462');
 </script>
-<!-- End MailerLite Universal -->
 
 <style>
-/* ===== 全域保險：防任何白邊 ===== */
+/* =================================================
+   全站「留白殺手」— 封死所有常見來源
+   ================================================= */
 html, body {
   margin: 0 !important;
   padding: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
 }
 
-/* ===== 浮動系統（真正 0 佔位） ===== */
-.floating-system {
-  position: fixed;
-  right: 25px;
-  bottom: 80px;
-  z-index: 9999;
+/* 常見內容容器撐高（不同主題會有） */
+main, .main, .site-main, .page, .page-content, .content {
+  margin: 0 !important;
+  padding-bottom: 0 !important;
+  min-height: 0 !important;
+}
 
-  /* 關鍵：完全不參與版面 */
+/* Footer 常見多餘留白（你圖裡就是這塊在撐） */
+footer, .footer, .site-footer {
+  margin: 0 !important;
+  padding-top: 8px !important;   /* 留最小必要，不想要可設 0 */
+  padding-bottom: 0 !important;
+}
+
+/* 若主題用 before/after 製造高度，直接砍 */
+footer::before, footer::after,
+.site-footer::before, .site-footer::after {
+  content: none !important;
+}
+
+/* =================================================
+   浮動 CTA（0 佔位、好看、品牌感）
+   ================================================= */
+.gt-float-cta {
+  position: fixed;
+  right: 24px;
+  bottom: 90px;
+  z-index: 99999;
+
+  /* 關鍵：不參與版面 */
   width: 0;
   height: 0;
   overflow: visible;
   pointer-events: none;
 }
 
-/* 只讓子物件可點 */
-.floating-system * {
-  pointer-events: auto;
-}
+/* 只讓按鈕可點 */
+.gt-float-cta * { pointer-events: auto; }
 
-/* ===== 提示氣泡（無背景、無底色） ===== */
-.toast-notice {
-  display: flex;
+/* CTA 膠囊本體 */
+.gt-float-btn {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  white-space: nowrap;
+  gap: 10px;
 
-  transform: translateX(150%);
-  transition: transform .6s cubic-bezier(.175,.885,.32,1.275);
-  cursor: pointer;
+  padding: 12px 18px;
+  border-radius: 999px;
 
-  background: transparent;
-}
-
-.toast-notice.active {
-  transform: translateX(0);
-}
-
-.toast-text {
+  background: #26394b;
+  color: #fff;
+  font-weight: 800;
   font-size: 14px;
-  font-weight: 700;
-  color: #26394b;
-  text-shadow:
-    1px 1px 2px rgba(255,255,255,.9),
-   -1px -1px 2px rgba(255,255,255,.9);
-}
 
-.toast-close {
-  font-size: 16px;
-  color: #999;
+  box-shadow: 0 10px 24px rgba(0,0,0,.22);
   cursor: pointer;
-  opacity: .6;
-}
-.toast-close:hover { opacity: 1; }
-
-/* ===== 箭頭 ===== */
-.get-discount-wrapper {
-  margin-top: 6px;
-  display: flex;
-  justify-content: flex-end;
-  cursor: pointer;
+  transform: translateY(0);
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.arrow-icon {
-  font-size: 24px;
-  color: #f9a31a;
-  line-height: 1;
-  animation: bounceDown 1.5s infinite;
-  filter: drop-shadow(0 2px 2px rgba(0,0,0,.1));
+.gt-float-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.28);
 }
 
-@keyframes bounceDown {
-  0%,100% { transform: translateY(0); }
-  50%     { transform: translateY(-8px); }
+.gt-float-tag {
+  background: #f9a31a;
+  color: #000;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
 }
 
-/* 手機微調 */
+/* 手機位置微調 */
 @media (max-width: 768px) {
-  .floating-system {
-    right: 15px;
-    bottom: 60px;
+  .gt-float-cta {
+    right: 16px;
+    bottom: 70px;
   }
 }
 </style>
 
-<!-- ===== 浮動物件本體 ===== -->
-<div class="floating-system">
-  <div id="promoToast" class="toast-notice" onclick="ml('show','LBUqjv',true)">
-    <div class="toast-text">✨ 恭喜！您有一份 9 折優惠待領取</div>
-    <div class="toast-close" onclick="event.stopPropagation();hideToast()">✕</div>
-  </div>
-
-  <div class="get-discount-wrapper" onclick="ml('show','LBUqjv',true)">
-    <div class="arrow-icon">▼</div>
+<!-- =========================
+     浮動優惠（唯一物件）
+     ========================= -->
+<div class="gt-float-cta">
+  <div class="gt-float-btn" onclick="ml('show','LBUqjv',true)">
+    🎉 立即領取優惠
+    <span class="gt-float-tag">10% OFF</span>
   </div>
 </div>
-
-<script>
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const t = document.getElementById('promoToast');
-    if (t) t.classList.add('active');
-  }, 1200);
-});
-
-function hideToast() {
-  const t = document.getElementById('promoToast');
-  if (t) t.classList.remove('active');
-}
-</script>
