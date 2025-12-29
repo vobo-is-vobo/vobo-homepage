@@ -1,130 +1,127 @@
 <!-- MailerLite Universal -->
 <script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '1940462');
+(function(w,d,e,u,f,l,n){
+  w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);};
+  l=d.createElement(e);l.async=1;l.src=u;
+  n=d.getElementsByTagName(e)[0];n.parentNode.insertBefore(l,n);
+})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+ml('account', '1940462');
 </script>
 <!-- End MailerLite Universal -->
 
 <style>
-    /* 浮動系統容器：使用 fixed 定位，確保它永遠漂浮在視窗之上 */
-    .floating-system {
-        position: fixed;
-        right: 25px;
-        bottom: 80px; 
-        z-index: 9999; /* 提高層級，確保不被其他區塊遮擋 */
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans TC", sans-serif;
-        
-        /* 核心修改：讓容器本身不佔用任何點擊與排版空間 */
-        pointer-events: none; 
-        height: 0;
-        width: 0;
-        overflow: visible; /* 確保內容能顯示出來 */
-    }
+/* ===== 全域保險：防任何白邊 ===== */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
-    /* 恢復子元件的可點擊性 */
-    .floating-system * {
-        pointer-events: auto; 
-    }
+/* ===== 浮動系統（真正 0 佔位） ===== */
+.floating-system {
+  position: fixed;
+  right: 25px;
+  bottom: 80px;
+  z-index: 9999;
 
-    /* 提示文字氣泡：純文字懸浮，無底色 */
-    .toast-notice {
-        white-space: nowrap;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transform: translateX(150%);
-        transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        cursor: pointer;
-        margin-bottom: 5px;
-        background: transparent; /* 確保無背景色 */
-    }
+  /* 關鍵：完全不參與版面 */
+  width: 0;
+  height: 0;
+  overflow: visible;
+  pointer-events: none;
+}
 
-    .toast-notice.active { 
-        transform: translateX(0); 
-    }
+/* 只讓子物件可點 */
+.floating-system * {
+  pointer-events: auto;
+}
 
-    .toast-text {
-        font-size: 14px;
-        font-weight: 700;
-        color: #26394b;
-        /* 透過輕微陰影確保在不同背景上的可讀性 */
-        text-shadow: 1px 1px 2px rgba(255,255,255,0.9), -1px -1px 2px rgba(255,255,255,0.9);
-    }
+/* ===== 提示氣泡（無背景、無底色） ===== */
+.toast-notice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
 
-    .toast-close { 
-        font-size: 16px; 
-        color: #999; 
-        cursor: pointer;
-        opacity: 0.6;
-    }
-    
-    .toast-close:hover {
-        opacity: 1;
-    }
+  transform: translateX(150%);
+  transition: transform .6s cubic-bezier(.175,.885,.32,1.275);
+  cursor: pointer;
 
-    /* 箭頭區塊 */
-    .get-discount-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        cursor: pointer;
-        margin-top: 5px;
-    }
+  background: transparent;
+}
 
-    .arrow-icon {
-        font-size: 24px;
-        color: #f9a31a;
-        animation: bounceDown 1.5s infinite;
-        margin-right: 15px; 
-        line-height: 1;
-        /* 加上濾鏡陰影增加層次感 */
-        filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
-    }
+.toast-notice.active {
+  transform: translateX(0);
+}
 
-    @keyframes bounceDown {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-8px); }
-    }
+.toast-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: #26394b;
+  text-shadow:
+    1px 1px 2px rgba(255,255,255,.9),
+   -1px -1px 2px rgba(255,255,255,.9);
+}
 
-    /* 行動裝置位置微調 */
-    @media (max-width: 768px) {
-        .floating-system {
-            right: 15px;
-            bottom: 60px;
-        }
-    }
+.toast-close {
+  font-size: 16px;
+  color: #999;
+  cursor: pointer;
+  opacity: .6;
+}
+.toast-close:hover { opacity: 1; }
+
+/* ===== 箭頭 ===== */
+.get-discount-wrapper {
+  margin-top: 6px;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.arrow-icon {
+  font-size: 24px;
+  color: #f9a31a;
+  line-height: 1;
+  animation: bounceDown 1.5s infinite;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.1));
+}
+
+@keyframes bounceDown {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-8px); }
+}
+
+/* 手機微調 */
+@media (max-width: 768px) {
+  .floating-system {
+    right: 15px;
+    bottom: 60px;
+  }
+}
 </style>
 
-<!-- 浮動元件結構 -->
+<!-- ===== 浮動物件本體 ===== -->
 <div class="floating-system">
-    <div id="promoToast" class="toast-notice" onclick="ml('show','LBUqjv', true)">
-        <div class="toast-text">✨ 恭喜！您有一份 9 折優惠待領取</div>
-        <div class="toast-close" onclick="event.stopPropagation(); hideToast()">✕</div>
-    </div>
+  <div id="promoToast" class="toast-notice" onclick="ml('show','LBUqjv',true)">
+    <div class="toast-text">✨ 恭喜！您有一份 9 折優惠待領取</div>
+    <div class="toast-close" onclick="event.stopPropagation();hideToast()">✕</div>
+  </div>
 
-    <div class="get-discount-wrapper" onclick="ml('show','LBUqjv', true)">
-        <div class="arrow-icon">▼</div>
-    </div>
+  <div class="get-discount-wrapper" onclick="ml('show','LBUqjv',true)">
+    <div class="arrow-icon">▼</div>
+  </div>
 </div>
 
 <script>
-    // 監控載入狀態
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const toast = document.getElementById('promoToast');
-            if (toast) toast.classList.add('active');
-        }, 1200);
-    });
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const t = document.getElementById('promoToast');
+    if (t) t.classList.add('active');
+  }, 1200);
+});
 
-    // 關閉氣泡邏輯
-    function hideToast() {
-        const toast = document.getElementById('promoToast');
-        if (toast) toast.classList.remove('active');
-    }
+function hideToast() {
+  const t = document.getElementById('promoToast');
+  if (t) t.classList.remove('active');
+}
 </script>
