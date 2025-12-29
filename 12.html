@@ -1,4 +1,112 @@
-<!-- HTML 結構 -->
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+/* ===============================
+   全站初始化（白邊殺手）
+   =============================== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* 防止跑馬燈造成橫向溢位 */
+}
+
+/* ===============================
+   色彩變數
+   =============================== */
+:root {
+  --brand-blue: #26394b;
+  --brand-gold: #f9a31a;
+}
+
+/* ===============================
+   Header
+   =============================== */
+#siteHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #fff;
+}
+
+/* ===============================
+   跑馬燈
+   =============================== */
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  background: #fff8e1;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-block;
+  padding: 10px 0;
+  animation: marquee 18s linear infinite;
+}
+
+.marquee:hover .marquee-content {
+  animation-play-state: paused;
+  cursor: pointer;
+}
+
+.marquee-content span {
+  margin-right: 48px;
+}
+
+@keyframes marquee {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(-100%); }
+}
+
+/* ===============================
+   倒數列
+   =============================== */
+.countdown-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  background: var(--brand-blue);
+  color: #fff;
+  font-weight: 700;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.time {
+  background: var(--brand-gold);
+  color: #000;
+  padding: 4px 8px;
+  border-radius: 6px;
+  min-width: 32px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 800;
+}
+</style>
+</head>
+
+<body>
+
 <header id="siteHeader">
   <!-- 跑馬燈 -->
   <div class="marquee">
@@ -9,138 +117,32 @@
     </div>
   </div>
 
-  <!-- 倒數計時列 -->
+  <!-- 倒數列 -->
   <div class="countdown-bar">
-    <div class="countdown-title">限時優惠倒數</div>
-    <div class="timer-display">
-      <div class="time-unit">
-        <div class="time-box" id="h">00</div>
-        <span class="label">時</span>
-      </div>
-      <span class="separator">:</span>
-      <div class="time-unit">
-        <div class="time-box" id="m">00</div>
-        <span class="label">分</span>
-      </div>
-      <span class="separator">:</span>
-      <div class="time-unit">
-        <div class="time-box" id="s">00</div>
-        <span class="label">秒</span>
-      </div>
+    <span>限時優惠倒數</span>
+    <div class="timer">
+      <span class="time" id="h">00</span> :
+      <span class="time" id="m">00</span> :
+      <span class="time" id="s">00</span>
     </div>
   </div>
 </header>
 
-<style>
-/* CSS 樣式 */
-:root {
-  --brand-blue: #26394b;
-  --brand-gold: #f9a31a;
-}
-
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background: #fff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.marquee {
-  background: #fff8e1;
-  color: #5d4037;
-  padding: 10px 0;
-  font-size: 14px;
-  font-weight: 700;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.marquee-content {
-  display: inline-block;
-  animation: marquee 20s linear infinite;
-}
-
-/* 滑鼠經過時暫停跑馬燈 */
-.marquee:hover .marquee-content {
-  animation-play-state: paused;
-  cursor: pointer;
-}
-
-.marquee-content span { margin-right: 50px; }
-
-@keyframes marquee {
-  from { transform: translateX(100%); }
-  to { transform: translateX(-100%); }
-}
-
-.countdown-bar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
-  padding: 12px;
-  background: var(--brand-blue);
-  color: #ffffff;
-}
-
-.countdown-title {
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.timer-display { 
-  display: flex; 
-  gap: 12px; 
-  align-items: flex-start; 
-}
-
-.time-unit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.time-box {
-  background: var(--brand-gold);
-  color: #000000;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-weight: 800;
-  font-size: 18px;
-  min-width: 36px;
-  text-align: center;
-  line-height: 1;
-  box-shadow: inset 0 -2px rgba(0,0,0,0.1);
-}
-
-.label {
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 400;
-}
-
-.separator {
-  font-weight: 800;
-  font-size: 18px;
-  margin-top: 6px;
-  color: var(--brand-gold);
-}
-</style>
-
 <script>
-/* JS 邏輯 */
 function runTimer() {
   const now = new Date();
   const h = 23 - now.getHours();
   const m = 59 - now.getMinutes();
   const s = 59 - now.getSeconds();
-  document.getElementById('h').innerText = String(h).padStart(2, '0');
-  document.getElementById('m').innerText = String(m).padStart(2, '0');
-  document.getElementById('s').innerText = String(s).padStart(2, '0');
+
+  document.getElementById('h').textContent = String(h).padStart(2, '0');
+  document.getElementById('m').textContent = String(m).padStart(2, '0');
+  document.getElementById('s').textContent = String(s).padStart(2, '0');
 }
+
 setInterval(runTimer, 1000);
 runTimer();
 </script>
+
+</body>
+</html>
