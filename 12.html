@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <style>
-/* ===============================
-   全站初始化（白邊殺手）
-   =============================== */
+/* ====== 全部歸零 ====== */
 * {
   box-sizing: border-box;
 }
@@ -15,33 +13,9 @@
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  overflow-x: hidden; /* 防止跑馬燈造成橫向溢位 */
 }
 
-/* ===============================
-   色彩變數
-   =============================== */
-:root {
-  --brand-blue: #26394b;
-  --brand-gold: #f9a31a;
-}
-
-/* ===============================
-   Header
-   =============================== */
-#siteHeader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background: #fff;
-}
-
-/* ===============================
-   跑馬燈
-   =============================== */
+/* ====== 跑馬燈 ====== */
 .marquee {
   width: 100%;
   overflow: hidden;
@@ -57,11 +31,6 @@ html, body {
   animation: marquee 18s linear infinite;
 }
 
-.marquee:hover .marquee-content {
-  animation-play-state: paused;
-  cursor: pointer;
-}
-
 .marquee-content span {
   margin-right: 48px;
 }
@@ -71,75 +40,52 @@ html, body {
   to   { transform: translateX(-100%); }
 }
 
-/* ===============================
-   倒數列
-   =============================== */
-.countdown-bar {
+/* ====== 倒數 ====== */
+.countdown {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 0;
-  background: var(--brand-blue);
+  background: #26394b;
   color: #fff;
   font-weight: 700;
-}
-
-.timer {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  text-align: center;
+  padding: 10px 0;
 }
 
 .time {
-  background: var(--brand-gold);
+  background: #f9a31a;
   color: #000;
   padding: 4px 8px;
   border-radius: 6px;
+  margin: 0 2px;
+  display: inline-block;
   min-width: 32px;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 800;
 }
 </style>
 </head>
 
 <body>
 
-<header id="siteHeader">
-  <!-- 跑馬燈 -->
-  <div class="marquee">
-    <div class="marquee-content">
-      <span>🎉 GTSelect 季節限定：全館熱銷優惠不停歇</span>
-      <span>精選鞋款最低 3 折起</span>
-      <span>新會員加入立即送 $100 折價券</span>
-    </div>
+<div class="marquee">
+  <div class="marquee-content">
+    <span>🎉 GTSelect 季節限定：全館熱銷優惠不停歇</span>
+    <span>精選鞋款最低 3 折起</span>
+    <span>新會員加入立即送 $100 折價券</span>
   </div>
+</div>
 
-  <!-- 倒數列 -->
-  <div class="countdown-bar">
-    <span>限時優惠倒數</span>
-    <div class="timer">
-      <span class="time" id="h">00</span> :
-      <span class="time" id="m">00</span> :
-      <span class="time" id="s">00</span>
-    </div>
-  </div>
-</header>
+<div class="countdown">
+  限時優惠倒數
+  <span class="time" id="h">00</span> :
+  <span class="time" id="m">00</span> :
+  <span class="time" id="s">00</span>
+</div>
 
 <script>
 function runTimer() {
   const now = new Date();
-  const h = 23 - now.getHours();
-  const m = 59 - now.getMinutes();
-  const s = 59 - now.getSeconds();
-
-  document.getElementById('h').textContent = String(h).padStart(2, '0');
-  document.getElementById('m').textContent = String(m).padStart(2, '0');
-  document.getElementById('s').textContent = String(s).padStart(2, '0');
+  document.getElementById('h').textContent = String(23 - now.getHours()).padStart(2, '0');
+  document.getElementById('m').textContent = String(59 - now.getMinutes()).padStart(2, '0');
+  document.getElementById('s').textContent = String(59 - now.getSeconds()).padStart(2, '0');
 }
-
 setInterval(runTimer, 1000);
 runTimer();
 </script>
