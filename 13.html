@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTSelect 浮動提示組件</title>
+
+    <!-- MailerLite Universal -->
+    <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+        .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+        n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '1940462');
+    </script>
+    <!-- End MailerLite Universal -->
+
+    <style>
+        /* 浮動系統容器 */
+        .floating-system {
+            position: fixed;
+            right: 25px;
+            bottom: 80px; 
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+        }
+
+        /* 提示文字氣泡樣式 */
+        .toast-notice {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 8px 14px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #eee;
+            transform: translateX(150%); /* 初始隱藏在螢幕右側外 */
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        /* 啟動狀態：滑入螢幕 */
+        .toast-notice.active { 
+            transform: translateX(0); 
+        }
+
+        .toast-text {
+            font-size: 13px;
+            font-weight: 700;
+            color: #26394b;
+        }
+
+        .toast-close { 
+            font-size: 14px; 
+            color: #ccc; 
+            cursor: pointer; 
+            padding: 0 2px;
+        }
+        
+        .toast-close:hover {
+            color: #999;
+        }
+
+        /* 箭頭區塊樣式 */
+        .get-discount-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            cursor: pointer;
+        }
+
+        .arrow-icon {
+            font-size: 20px;
+            color: #f9a31a;
+            animation: bounceDown 1.5s infinite;
+            margin-right: 20px; 
+            margin-top: 8px; 
+            line-height: 1;
+        }
+
+        /* 箭頭跳動動畫 */
+        @keyframes bounceDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* 行動裝置適配 */
+        @media (max-width: 768px) {
+            .floating-system {
+                right: 15px;
+                bottom: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 浮動提示系統結構 -->
+    <div class="floating-system">
+        <!-- 提示文字氣泡：點擊後觸發 MailerLite 表單 LBUqjv -->
+        <div id="promoToast" class="toast-notice" onclick="ml('show','LBUqjv', true)">
+            <div class="toast-text">✨ 恭喜！您有一份 9 折優惠待領取</div>
+            <!-- 點擊 X 僅關閉提示文字，不觸發 MailerLite -->
+            <div class="toast-close" onclick="event.stopPropagation(); hideToast()">✕</div>
+        </div>
+
+        <!-- 下方動態箭頭：點擊後同樣觸發 MailerLite 表單 -->
+        <div class="get-discount-wrapper" onclick="ml('show','LBUqjv', true)">
+            <div class="arrow-icon">▼</div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * 頁面載入邏輯
+         * 載入 1 秒後自動滑入提示文字氣泡
+         */
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const toast = document.getElementById('promoToast');
+                if (toast) {
+                    toast.classList.add('active');
+                }
+            }, 1000);
+        });
+
+        /**
+         * 關閉提示文字功能
+         */
+        function hideToast() {
+            const toast = document.getElementById('promoToast');
+            if (toast) {
+                toast.classList.remove('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
